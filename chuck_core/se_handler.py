@@ -2,11 +2,11 @@ from ewsrestgatewayclient.ebo import EBO
 from chuck_core.constants import se_user
 from chuck_core.constants import se_pass
 from chuck_core.constants import room_mapping
+from chuck_core.constants import thermostat_max
+from chuck_core.constants import thermostat_min
 import urllib.parse
 
 # This python file contains all methods to call Schnieder Electric Connector Methods
-# These methods will be called from MindMeld Connector and Meraki Connector to
-# control meeting rooms and office space resources
 
 
 def lights_control(space_id, value):
@@ -35,6 +35,13 @@ def thermostat_control(space_id, value):
     :param value: Thermostat value
     :return:
     '''
+
+    # Check if the value is within the range, if not set to the limit
+    if int(value) > int(thermostat_max):
+        value = thermostat_max
+    if int(value) < int(thermostat_min):
+        value = thermostat_min
+
     se_client = EBO()
     token = se_client.token.get_token(se_user, se_pass)
 

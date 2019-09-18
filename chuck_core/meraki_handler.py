@@ -16,6 +16,8 @@ def room_occupancy_control(space_id, occupied=False):
     if occupied:
         se_handler.lights_control(space_id, room_occupied_presets.get('Light Status'))
         se_handler.thermostat_control(space_id, room_occupied_presets.get('Temp'))
+        se_handler.room_occupancy_control(space_id, '2')
     else:
         se_handler.lights_control(space_id, room_unoccupied_presets.get('Light Status'))
         se_handler.thermostat_control(space_id, room_unoccupied_presets.get('Temp'))
+        se_handler.room_occupancy_control(space_id, '0')

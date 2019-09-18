@@ -71,9 +71,46 @@ def blinds_control(space_id, value):
                                            custom_headers={'Authorization': 'Bearer ' + token.access_token})
 
 
+def projector_control(space_id, value):
+    '''
+    Call this method to control the lights of the given space id
+    :param space_id: ID of the space (Meeting room, Office space)
+    :param value: Projector Screen Level from 0 to 100 (O - OFF, 100 - ON)
+    :return:
+    '''
+
+    se_client = EBO()
+    token =se_client.token.get_token(se_user, se_pass)
+
+    #get the room ID of SE
+    se_id = room_mapping.get(space_id)+'/Projector'
+
+    result =se_client.values.update_value(urllib.parse.quote(se_id, safe=''),
+                                          new_value=value,
+                                          custom_headers={'Authorization':'Bearer ' + token.access_token})
+
+
+def room_occupancy_control(space_id, value):
+    '''
+    Call this method to control the lights of the given space id
+    :param space_id: ID of the space (Meeting room, Office space)
+    :param value: set room to available, occupied or unoccupied
+    :return:
+    '''
+
+    se_client = EBO()
+    token =se_client.token.get_token(se_user, se_pass)
+
+    #get the room ID of SE
+    se_id = room_mapping.get(space_id)+'/RoomStatus'
+
+    result =se_client.values.update_value(urllib.parse.quote(se_id, safe=''),
+                                          new_value=value,
+                                          custom_headers={'Authorization':'Bearer ' + token.access_token})
+
 if __name__ == '__main__':
 
     # This is to test
-    lights_control('test', '1')
+    room_occupancy_control('test', '0')
     #blinds_control('test', '10')
     #thermostat_control('test', '50')

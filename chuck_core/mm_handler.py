@@ -14,6 +14,7 @@ def presentation_mode(space_id):
 
     se_handler.lights_control(space_id, presentation_mode_presets.get('Light Status'))
     se_handler.blinds_control(space_id, presentation_mode_presets.get('Shade'))
+    se_handler.room_occupancy_control(space_id, presentation_mode_presets.get('Projector'))
 
 
 def normal_mode(space_id):
@@ -25,6 +26,7 @@ def normal_mode(space_id):
 
     se_handler.lights_control(space_id, normal_mode_presets.get('Light Status'))
     se_handler.blinds_control(space_id, normal_mode_presets.get('Shade'))
+    se_handler.room_occupancy_control(space_id, normal_mode_presets.get('Projector'))
 
 
 if __name__ == '__main__':

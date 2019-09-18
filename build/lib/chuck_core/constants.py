@@ -1,6 +1,9 @@
 se_user = 'Admin'
 se_pass = 'P@ssword'
 
+thermostat_max = '28'
+thermostat_min = '18'
+
 # Mapping of room ID from webex to room ID in Schneider electric
 # key - room id from webex
 # value - room id from SE
@@ -18,4 +21,14 @@ presentation_mode_presets = {
 normal_mode_presets = {
     'Light Status': '1',
     'Shade': '90'
+}
+
+room_occupied_presets = {
+    'Light Status': '1',
+    'Temp': '21'
+}
+
+room_unoccupied_presets = {
+    'Light Status': '0',
+    'Temp': '24'
 }

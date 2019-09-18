@@ -9,3 +9,13 @@ room_mapping = {
     '' : '',
     '' : ''
 }
+
+presentation_mode_presets = {
+    'Light Status': '0',
+    'Shade': '0'
+}
+
+normal_mode_presets = {
+    'Light Status': '1',
+    'Shade': '90'
+}

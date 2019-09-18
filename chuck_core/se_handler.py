@@ -21,7 +21,7 @@ def lights_control(space_id, value):
     token =se_client.token.get_token(se_user, se_pass)
 
     #get the room ID of SE
-    se_id = room_mapping.get(space_id)+'/Intensity'
+    se_id = room_mapping.get(space_id)+'/Light Status'
 
     result =se_client.values.update_value(urllib.parse.quote(se_id, safe=''),
                                           new_value=value,
@@ -35,7 +35,15 @@ def thermostat_control(space_id, value):
     :param value: Thermostat value
     :return:
     '''
-    pass
+    se_client = EBO()
+    token = se_client.token.get_token(se_user, se_pass)
+
+    # get the room ID of SE
+    se_id = room_mapping.get(space_id) + '/Temp'
+
+    result = se_client.values.update_value(urllib.parse.quote(se_id, safe=''),
+                                           new_value=value,
+                                           custom_headers={'Authorization': 'Bearer ' + token.access_token})
 
 
 def blinds_control(space_id, value):
@@ -45,10 +53,20 @@ def blinds_control(space_id, value):
     :param value: 0 to 100 (0 - Blinds OFF, 100 - Blinds ON)
     :return:
     '''
-    pass
+    se_client = EBO()
+    token = se_client.token.get_token(se_user, se_pass)
+
+    # get the room ID of SE
+    se_id = room_mapping.get(space_id) + '/Shade'
+
+    result = se_client.values.update_value(urllib.parse.quote(se_id, safe=''),
+                                           new_value=value,
+                                           custom_headers={'Authorization': 'Bearer ' + token.access_token})
 
 
 if __name__ == '__main__':
 
     # This is to test
-    lights_control('test', '51')
+    lights_control('test', '1')
+    #blinds_control('test', '10')
+    #thermostat_control('test', '50')

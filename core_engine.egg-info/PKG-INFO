@@ -1,0 +1,14 @@
+Metadata-Version: 1.2
+Name: core-engine
+Version: 1.0.0
+Summary: This is the core business logic of the solution
+Home-page: UNKNOWN
+Author: Team Chuck
+Author-email: rahul.kumar@global.ntt
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: For Hackathon Use Only
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6

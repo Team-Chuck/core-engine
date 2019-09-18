@@ -1,0 +1,8 @@
+setup.py
+chuck_core/__init__.py
+chuck_core/constants.py
+chuck_core/se_handler.py
+core_engine.egg-info/PKG-INFO
+core_engine.egg-info/SOURCES.txt
+core_engine.egg-info/dependency_links.txt
+core_engine.egg-info/top_level.txt

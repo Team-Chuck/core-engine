@@ -14,9 +14,10 @@ occupancy_status = {
 # key - room id from webex
 # value - room id from SE
 room_mapping = {
-    'test' : '01/Server 1/Cisco Hackathon/Team 4/Conference Room A/Values',
-    '' : '',
-    '' : ''
+    'Room A' : '01/Server 1/Cisco Hackathon/Team 4/Conference Room A/Values',
+    'Room B' : '01/Server 1/Cisco Hackathon/Team 4/Conference Room B/Values',
+    'Room C' : '01/Server 1/Cisco Hackathon/Team 4/Conference Room C/Values',
+    'Room D' : '01/Server 1/Cisco Hackathon/Team 4/Conference Room D/Values'
 }
 
 presentation_mode_presets = {

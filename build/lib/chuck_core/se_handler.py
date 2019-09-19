@@ -5,6 +5,7 @@ from chuck_core.constants import se_pass
 from chuck_core.constants import room_mapping
 from chuck_core.constants import thermostat_max
 from chuck_core.constants import thermostat_min
+
 import urllib.parse
 
 # This python file contains all methods to call Schnieder Electric Connector Methods
@@ -128,27 +129,25 @@ def aggregated_room_data():
 
     print(value_list)
 
-    #create a subsription
     subscription = NewSubscriptionModel()
     subscription.duration_in_minutes = 30
     subscription.ids = value_list
     subscription.subscription_type = 'ValueItemChanged'
+
     new_subscription = se_client.subscriptions.create(subscription, custom_headers={'Authorization':'Bearer ' + token.access_token})
 
-    #create the notification object
     notification = NewNotificationModel()
     notification.subscription_id = new_subscription.id
     notification.changes_only = False
     new_notification = se_client.notifications.create(notification, custom_headers={'Authorization':'Bearer ' + token.access_token})
-    
-    #get updated values for the notifications (will be all because we are not reusing the subscription)
+
     results = se_client.notifications.retrieve_notifications(new_notification.id, 100, 0, custom_headers={'Authorization':'Bearer ' + token.access_token})
     return_results = []
     
     for result in results:
         return_results.append({'id': result.changed_item_id, 'value': result.value})
     
-    print(return_results)
+    return return_results
 
 if __name__ == '__main__':
     # This is to test

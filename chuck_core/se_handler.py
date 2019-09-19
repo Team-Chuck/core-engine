@@ -147,7 +147,7 @@ def aggregated_room_data():
     for result in results:
         return_results.append({'id': result.changed_item_id, 'value': result.value})
     
-    print(return_results)
+    return return_results
 
 if __name__ == '__main__':
     # This is to test

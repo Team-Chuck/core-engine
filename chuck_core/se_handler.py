@@ -112,6 +112,24 @@ def room_occupancy_control(space_id, value):
                                           custom_headers={'Authorization':'Bearer ' + token.access_token})
 
 
+def retrieve_current_thermostat(space_id):
+    '''
+    This method retrieves current temperature of AC
+    :param space_id: ID of the space (Meeting room, Office space)
+    :return: returns the current temperature of the room
+    '''
+    se_client = EBO()
+    token = se_client.token.get_token(se_user, se_pass)
+
+    # get the room ID of SE
+    se_id = room_mapping.get(space_id, default_room) + '/Temp'
+
+    result = se_client.values.retrieve_value(urllib.parse.quote(se_id, safe=''),
+                                             custom_headers={'Authorization':'Bearer ' + token.access_token})
+
+    return result
+
+
 def aggregated_room_data():
     '''
     Call this method to get the current values of all the points
@@ -148,9 +166,11 @@ def aggregated_room_data():
     
     return return_results
 
+
 if __name__ == '__main__':
     # This is to test
     #room_occupancy_control('test', '0')
-    test = aggregated_room_data()
+    # test = aggregated_room_data()
     #blinds_control('test', '10')
-    #thermostat_control('test', '50')
+    # thermostat_control('room a', '25')
+    print(retrieve_current_thermostat('room a'))

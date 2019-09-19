@@ -30,6 +30,18 @@ def normal_mode(space_id):
     se_handler.projector_control(space_id, normal_mode_presets.get('Projector'))
 
 
+def increase_temperature(space_id):
+    '''
+    This methods increases the temperature by 2 degrees celsius
+    :param space_id: ID of the space (Meeting room, Office space)
+    :return:
+    '''
+
+    current_temperature = se_handler.retrieve_current_thermostat(space_id)
+
+    se_handler.thermostat_control(space_id, str(int(current_temperature) + 2))
+
+
 if __name__ == '__main__':
 
-    normal_mode('test')
+    increase_temperature('room a')

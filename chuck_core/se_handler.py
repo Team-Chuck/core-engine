@@ -127,8 +127,6 @@ def aggregated_room_data():
         for point_name in point_list:
             value_list.append(value + '/' + point_name)
 
-    print(value_list)
-
     subscription = NewSubscriptionModel()
     subscription.duration_in_minutes = 30
     subscription.ids = value_list

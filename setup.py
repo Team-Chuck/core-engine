@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name = 'core-engine',
-    version = '1.0.2',
+    version = '1.0.4',
     author = 'Team Chuck',
     author_email = 'rahul.kumar@global.ntt',
     description = 'This is the core business logic of the solution',

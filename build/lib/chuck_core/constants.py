@@ -14,11 +14,13 @@ occupancy_status = {
 # key - room id from webex
 # value - room id from SE
 room_mapping = {
-    'Room A' : '01/Server 1/Cisco Hackathon/Team 4/Conference Room A/Values',
-    'Room B' : '01/Server 1/Cisco Hackathon/Team 4/Conference Room B/Values',
-    'Room C' : '01/Server 1/Cisco Hackathon/Team 4/Conference Room C/Values',
-    'Room D' : '01/Server 1/Cisco Hackathon/Team 4/Conference Room D/Values'
+    'room a' : '01/Server 1/Cisco Hackathon/Team 4/Conference Room A/Values',
+    'room b' : '01/Server 1/Cisco Hackathon/Team 4/Conference Room B/Values',
+    'room c' : '01/Server 1/Cisco Hackathon/Team 4/Conference Room C/Values',
+    'room d' : '01/Server 1/Cisco Hackathon/Team 4/Conference Room D/Values'
 }
+
+default_room = 'room a'
 
 presentation_mode_presets = {
     'Light Status': '0',

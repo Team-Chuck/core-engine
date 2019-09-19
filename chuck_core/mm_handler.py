@@ -42,6 +42,18 @@ def increase_temperature(space_id):
     se_handler.thermostat_control(space_id, str(int(current_temperature) + 2))
 
 
+def decrease_temperature(space_id):
+    '''
+    This method decreases the temperature by 2 degrees
+    :param space_id: ID of the space (Meeting room, Office space)
+    :return:
+    '''
+
+    current_temperature = se_handler.retrieve_current_thermostat(space_id)
+
+    se_handler.thermostat_control(space_id, str(int(current_temperature) - 2))
+
+
 if __name__ == '__main__':
 
-    increase_temperature('room a')
+    decrease_temperature('room a')

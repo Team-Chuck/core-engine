@@ -5,6 +5,7 @@ from chuck_core.constants import se_pass
 from chuck_core.constants import room_mapping
 from chuck_core.constants import thermostat_max
 from chuck_core.constants import thermostat_min
+from chuck_core.constants import default_room
 
 import urllib.parse
 
@@ -23,7 +24,7 @@ def lights_control(space_id, value):
     token =se_client.token.get_token(se_user, se_pass)
 
     #get the room ID of SE
-    se_id = room_mapping.get(space_id)+'/Light Status'
+    se_id = room_mapping.get(space_id, default_room)+'/Light Status'
 
     result =se_client.values.update_value(urllib.parse.quote(se_id, safe=''),
                                           new_value=value,
@@ -48,7 +49,7 @@ def thermostat_control(space_id, value):
     token = se_client.token.get_token(se_user, se_pass)
 
     # get the room ID of SE
-    se_id = room_mapping.get(space_id) + '/Temp'
+    se_id = room_mapping.get(space_id, default_room) + '/Temp'
 
     result = se_client.values.update_value(urllib.parse.quote(se_id, safe=''),
                                            new_value=value,
@@ -66,7 +67,7 @@ def blinds_control(space_id, value):
     token = se_client.token.get_token(se_user, se_pass)
 
     # get the room ID of SE
-    se_id = room_mapping.get(space_id) + '/Shade'
+    se_id = room_mapping.get(space_id, default_room) + '/Shade'
 
     result = se_client.values.update_value(urllib.parse.quote(se_id, safe=''),
                                            new_value=value,
@@ -85,7 +86,7 @@ def projector_control(space_id, value):
     token =se_client.token.get_token(se_user, se_pass)
 
     #get the room ID of SE
-    se_id = room_mapping.get(space_id)+'/Projector'
+    se_id = room_mapping.get(space_id, default_room)+'/Projector'
 
     result =se_client.values.update_value(urllib.parse.quote(se_id, safe=''),
                                           new_value=value,
@@ -104,7 +105,7 @@ def room_occupancy_control(space_id, value):
     token =se_client.token.get_token(se_user, se_pass)
 
     #get the room ID of SE
-    se_id = room_mapping.get(space_id)+'/RoomStatus'
+    se_id = room_mapping.get(space_id, default_room)+'/RoomStatus'
 
     result = se_client.values.update_value(urllib.parse.quote(se_id, safe=''),
                                           new_value=value,
